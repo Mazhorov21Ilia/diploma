@@ -1,4 +1,3 @@
-server_port: 5000
 client_polling_interval_seconds: 10
 clients:
   - http://localhost:8080

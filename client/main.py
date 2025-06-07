@@ -19,14 +19,13 @@ def metrics():
         return jsonify(metrics_data), 200
 
     except Exception as e:
-        return jsonify({"error": str(e)}), 500
+        return jsonify({"Error": str(e)}), 500
 
 
 def run_agent():
     host_ip = "0.0.0.0"
-    port = config.get("server_polling_port", 8080)
 
-    app.run(host=host_ip, port=port)
+    app.run(host=host_ip, port=8080)
 
 
 if __name__ == "__main__":

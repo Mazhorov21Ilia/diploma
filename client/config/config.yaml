@@ -1,12 +1,5 @@
 device_id: client_001
 
-server_polling_port: 8080
-
 packet_buffer_duration: 15
 
-packet_buffer_maxlen: 10000
-
 max_external_ips_to_store: 20
-
-anomaly_thresholds:
-  traffic_per_ip_std_dev: 100000
