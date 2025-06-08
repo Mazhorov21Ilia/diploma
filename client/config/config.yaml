@@ -1,5 +1,3 @@
 device_id: client_001
 
 packet_buffer_duration: 15
-
-max_external_ips_to_store: 20
