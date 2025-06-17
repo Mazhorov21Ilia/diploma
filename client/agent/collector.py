@@ -25,6 +25,7 @@ def start_background_sniffer():
         filter=bpf_filter
     )
 def aggregate_ip_traffic():
+    global packet_buffer
     traffic = defaultdict(lambda: {"sent": 0, "received": 0})
     for pkt in packet_buffer:
         if IP in pkt:
@@ -52,8 +53,8 @@ def collect_network_metrics(config):
     connections = psutil.net_connections()
     metrics = {
         "device_id": config.get("device_id", "unknown_device"),
-        "incoming_traffic": io_counters.bytes_recv - incoming_tr,
-        "outgoing_traffic": io_counters.bytes_sent - outcoming_tr,
+        "incoming_traffic": io_counters.bytes_recv - incoming_tr if io_counters.bytes_recv > 2 else 0,
+        "outgoing_traffic": io_counters.bytes_sent - outcoming_tr if io_counters.bytes_sent > 2 else 0,
         "active_tcp_connections": sum(1 for conn in connections if conn.status == 
                                       "ESTABLISHED" and conn.type == socket.SOCK_STREAM),
         "active_udp_connections": sum(1 for conn in connections if conn.type == 

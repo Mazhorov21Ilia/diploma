@@ -2,7 +2,7 @@ import os
 import yaml
 
 
-def load_config(config_path=r"C:\Users\Sarah\Desktop\diploma\server\config\config.yaml"):
+def load_config(config_path=r"/home/sarah/Desktop/diploma/server/config/config.yaml"):
     if not os.path.exists(config_path):
         raise FileNotFoundError(f"Config file not found at {config_path}")
 
